@@ -23,3 +23,16 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+
+Route.group(() => {
+  Route.get('hello', 'ApiController.hello')
+  Route.get('users', 'ApiController.index')
+}).prefix('Api')
+Route.group(() => {
+  Route.get('article', 'MainsController.formularz')
+  Route.post('article', 'MainsController.sendform').as('form_send')
+
+})
+
+
